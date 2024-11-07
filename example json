@@ -1,0 +1,38 @@
+// отправка ошибок на клиент
+{
+    "status" : "error",
+    "message" : "error message"
+}
+
+// отпрвка сообщения, что запрос успешно выполнен
+{
+    "status" : "success",
+    "message" : "success"
+}
+
+// отпрвка сообщения, что запрос на получение данных прошел успешно
+{
+    "status" : "success",
+    "body" : {}
+}
+
+
+// отправка данных для содания чата
+{
+    "chatName" : "name",
+    "member" : "user",
+}
+
+// отправка json протоколом websocket
+{
+    "trigger" : "message",
+    "action" : "get-message",
+    "data" : {}
+}
+
+// успешный ответ от сервера при ws-запросе
+{
+    "status" : "success",
+    "target" : "message",
+    "data" : {}
+}

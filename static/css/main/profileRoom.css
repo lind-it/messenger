@@ -1,0 +1,84 @@
+.profile-room {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    max-height: 30vh;
+    height: auto;
+    padding: 5px;
+    margin-top: 25%;
+    align-self: center;
+    align-content: center;
+    color: #bbbeca;
+    border: 1px solid #2a2a40;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 1px #2a2a40;
+    background-color: #212842;
+}
+
+.profile-room-main{
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+
+.profile-room img{
+    align-self: center;
+    width: 128px;
+    height: 128px;
+}
+
+.profile-room h1{
+    align-self: center;
+}
+
+.profile-room a{
+    margin-top: 20%;
+    color: #ac2828;
+}
+
+.profile-change-form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-top: 50px;
+}
+
+.avatar-input{
+    margin-top: 15px;
+    align-self: center;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+
+.avatar-input input[type=file]{
+    display: none;
+}
+
+.name-change-input{
+    align-self: center;
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    background: #424868;
+    color: #bbbeca;
+    border: none;
+}
+
+.profile-change-save{
+    align-self: center;
+    align-content: center;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+    height: 20px;
+    width: 40%;
+    background: #464855;
+    color: #bbbeca;
+    font-size: 12px ;
+}

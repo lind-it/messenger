@@ -1,0 +1,54 @@
+.create-chat-room{
+    display: none;
+    flex-direction: column;
+    color: #beb9ff;
+    width: 500px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.create-chat-room button{
+    align-self: center;
+    width: 30%;
+    height: 30px;
+    margin-top: 5px;
+    border-radius: 20px;
+    border: none;
+    background: #464855;
+    color: #bbbeca;
+}
+
+.switch-forms button{
+    width: 20%;
+    height: 20px;
+    border-radius: 0;
+}
+
+.create-chat-room label{
+    margin-top: 10px;
+    height: 25px;
+}
+
+
+.create-chat-room input{
+    margin-top: 10px;
+    height: 30px;
+    background: #424868;
+    color: #bbbeca;
+    border: none;
+}
+
+.create-chat {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-group{
+    display: none;
+    flex-direction: column;
+}

@@ -1,0 +1,111 @@
+.chat-room{
+    display: none;
+}
+
+.chat-room-head{
+    display: flex;
+    flex-direction: row;
+    height: 7vh;
+    width: 100%;
+    border-bottom: 1px solid;
+    color: #bbbeca;
+}
+
+.chat-room-head div {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chat-room-head h3{
+    margin-top: 10%;
+    margin-left: 0.4vw;
+}
+
+.chat-room-head img{
+    width: 60px;
+    height: 60px;
+}
+
+.chat-room-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.my{
+    display: flex;
+    margin-top: 1vh;
+    margin-right: 1vh;
+    background: #2c2777;
+    border-top-right-radius: 90px;
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 80px;
+    padding: 10px;
+    padding-left: 15px;
+    max-width: 450px;
+    min-width: 2vw;
+    word-break: break-word;
+    color: #bbbeca;
+    font-size: 25px;
+    align-self: flex-end;
+    text-align: left;
+}
+
+.their{
+    display: flex;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    background: #4b2777;
+    border-top-right-radius: 90px;
+    border-top-left-radius: 90px;
+    border-bottom-right-radius: 80px;
+    padding: 10px;
+    padding-left: 15px;
+    max-width: 450px;
+    min-width: 2vw;
+    word-break: break-word;
+    color: #bbbeca;
+    font-size: 25px;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.chat-room form{
+    position: absolute;
+    bottom: 1vh;
+    width: 98%;
+    align-self: center;
+}
+
+.chat-room form textarea {
+    border: none;
+    width: 90%;
+    font-size: 25px;
+    height: max-content;
+    min-height: 6vh;
+    border-top-right-radius: 90px;
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 80px;
+    align-self: flex-end;
+    background: #d8e3ef;
+    align-content: center;
+    padding-left: 10px;
+}
+
+.chat-room form button{
+    background: #274f77;
+    width: 6vh;
+    height: 6vh;
+    border: none;
+    border-radius: 50%;
+    align-self: flex-end;
+    align-content: center;
+    font-size: 25px;
+}
+
+.chat-room-body form button img{
+    width: 5vh;
+    height: 5vh;
+}
