@@ -60,7 +60,7 @@ function init()
                 e.stopPropagation();
                 let thisChat = e.currentTarget;
 
-                // инициализируем функцию, чтобы передать в функцию, которую она вызывает параметр e
+                // инициализируем функцию, чтобы передать в функцию, которую она вызывает, параметр e
                 let callBack = () =>
                 {
                     // убираем показанные сообщения
@@ -73,7 +73,6 @@ function init()
                     {
                         chosenChat.className = chosenChat.className.replace(' chosen', '');
                     }
-
 
                     // даем комнате показатель того, что пользователь находится в ней
                     thisChat.className += ' chosen';

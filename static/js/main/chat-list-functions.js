@@ -18,7 +18,6 @@ export function getChats()
             else
             {
                 let answer = JSON.parse(xhr.response);
-                console.log(answer)
 
                 if (answer.status === 'error')
                 {

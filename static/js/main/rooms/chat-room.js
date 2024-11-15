@@ -17,11 +17,12 @@ export function loadChatRoomData(chat)
 
     answer.then((data) =>
     {
-        for (let i = 0; i <= data.messages; i++)
+        console.log('11111111')
+        for (let i = 0; i <= data.length; i++)
         {
             chatRoomBody.insertAdjacentHTML('beforeEnd',
         `
-                <div class="${data.messages[0].owner}">data.messages[0].text</div>
+                <div class="${data[0].owner}">${data[0].text}</div>
             `);
         }
 
@@ -58,7 +59,6 @@ function getChatRoomMessages(chatId) {
             else
             {
                 let answer = JSON.parse(xhr.response);
-                console.log(answer);
 
                 if (answer.status === 'error')
                 {

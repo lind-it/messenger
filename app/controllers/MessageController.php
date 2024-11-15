@@ -14,7 +14,7 @@ class MessageController extends Controller
         {
             $messages = Message::table()
                 ->query()
-                ->find([
+                ->findAll([
                     ['chat_id', '=', $_GET['chat_id']]
                 ]);
 
@@ -34,7 +34,20 @@ class MessageController extends Controller
             return json_encode($answer);
         }
 
+        $func = function ($message)
+                {
+                    $message->owner = $message->user_id === $_SESSION['user_id']
+                                          ? 'my'
+                                          : 'their';
+
+                    return $message;
+                };
+
+        // добавляем сообщениям идентификатор владельца сообщения
+        $messages = array_map($func, $messages);
+
         $answer['status'] = 'success';
+        $answer['data'] = $messages;
 
         return json_encode($answer);
 
