@@ -73,8 +73,7 @@
                 </div>
 
                 <div id="chat-room-body" class="chat-room-body">
-                    <div class="my">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-                    <div class="their">aaa</div>
+
                 </div>
 
                 <form name="message">

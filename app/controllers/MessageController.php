@@ -74,6 +74,9 @@ class MessageController extends Controller
         $answer['status'] = 'success';
         $answer['target'] = 'message';
         $answer['data']['text'] = $message->text;
+        $answer['data']['short_text'] = $message->text < 15
+                                        ? $message->text
+                                        : substr($message->text, 0, 15) . '..';
         $answer['data']['time'] = $message->time;
         $answer['data']['chat_id'] = $message->chat_id;
 

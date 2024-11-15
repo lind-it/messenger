@@ -3,8 +3,7 @@ import {getChats, createChatElement, createChat} from './chat-list-functions.js'
 import {hideRoom, showRoom} from './rooms.js';
 import {uploadProfileData, changeProfile} from './rooms/profile-room.js';
 import {wsConnectionInit} from './wsInit.js';
-import {showChatRoom} from './rooms/chat-room.js';
-import {Chat} from './classes/Chat.js';
+import {loadChatRoomData} from './rooms/chat-room.js';
 
 document.addEventListener('DOMContentLoaded', ()=>
 {
@@ -22,14 +21,15 @@ function init()
     let sendMessageForm = document.forms.message;
     let websocket = wsConnectionInit();
 
-    // создаем список чатов
-    let chats = [];
-
     //навешиваем обработчики собитий
     //при нажатии на кнопку плюса показываем форму создания чатов
     createChatBtn.addEventListener('click', () =>
     {
-        hideRoom('#chat-room');
+        hideRoom('#chat-room', ()=> {
+            // убираем показанные сообщения
+            document.querySelector('.chat-room-body').innerHTML = '';
+            document.querySelector('.chosen').className.replace('chosen', '');
+        });
         hideRoom('#profile-room');
         showRoom('#create-chat-room', 'flex');
     });
@@ -37,27 +37,48 @@ function init()
     //при нажатии на кнопку профиля показываем профиль
     profileBtn.addEventListener('click', ()=>
     {
-        hideRoom('#chat-room');
+        hideRoom('#chat-room', ()=> {
+            // убираем показанные сообщения
+            document.querySelector('.chat-room-body').innerHTML = '';
+            document.querySelector('.chosen').className.replace('chosen', '');
+        });
         hideRoom('#create-chat-room');
         showRoom('#profile-room', 'flex', uploadProfileData);
     });
 
     // создаем чаты из полученных данных
+    // а также навешиваем на них обработчики событий
     getChats().then((chatData)=>
     {
         for(let i = 0; i < chatData.length; i++)
         {
-            let chatElement = createChatElement(chatData[i], chats);
+            let chatElement = createChatElement(chatData[i]);
 
             // при нажатии на чат преходим в комнату чата
             chatElement.addEventListener('click', (e)=>
             {
                 e.stopPropagation();
+                let thisChat = e.currentTarget;
 
                 // инициализируем функцию, чтобы передать в функцию, которую она вызывает параметр e
                 let callBack = () =>
                 {
-                    showChatRoom(e.currentTarget)
+                    // убираем показанные сообщения
+                    document.querySelector('.chat-room-body').innerHTML = '';
+
+                    // убираем с комнаты показатель того, что пользователь находится в ней
+                    let chosenChat = document.querySelector('.chosen');
+
+                    if (chosenChat !== null)
+                    {
+                        chosenChat.className = chosenChat.className.replace(' chosen', '');
+                    }
+
+
+                    // даем комнате показатель того, что пользователь находится в ней
+                    thisChat.className += ' chosen';
+
+                    loadChatRoomData(thisChat);
                 }
 
                 hideRoom('#profile-room');
@@ -68,7 +89,7 @@ function init()
             chatList.insertAdjacentElement('afterbegin', chatElement);
         }
     });
-    console.log(chats);
+
     createChatForm.addEventListener('submit', createChat);
     changeProfileBtn.addEventListener('click', changeProfile);
     sendMessageForm.addEventListener('submit', (e) =>
@@ -79,3 +100,4 @@ function init()
         sendMessage(form, websocket);
     });
 }
+

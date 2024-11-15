@@ -1,5 +1,3 @@
-import {Chat} from './classes/Chat.js';
-
 export function getChats()
 {
     let xhr = new XMLHttpRequest();
@@ -37,14 +35,12 @@ export function getChats()
 
 }
 
-export function createChatElement(chatData, chatList)
+export function createChatElement(chatData)
 {
     let chatName = chatData.name;
     let chatImg = chatData.avatar;
     let chatElement = document.createElement('div');
 
-    let chat = new Chat(chatData.id, chatData.name, chatData.avatar)
-    chatList.push(chat);
 
     chatElement.className = 'chat';
     chatElement.id = chatData.id
@@ -54,7 +50,10 @@ export function createChatElement(chatData, chatList)
         <img src="static/img/avatars/${chatImg}" alt="">
         <div class="chat-body">
             <h3>${chatName}</h3>
-            <p>last message</p>
+            <div class="chat-body-bottom">
+                <p class="last-message">last message</p>
+                <div class="unread-message-count">0</div>
+            </div>
         </div>
     `;
 

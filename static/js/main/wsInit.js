@@ -14,9 +14,6 @@ export function wsConnectionInit()
         // создаем перечисление целей, в соответствии с которыми будт вызываться функции
         let targets = {'message': createMessageElement};
 
-        console.log(event.data);
-        console.log(JSON.parse(event.data));
-
         let answer = JSON.parse(event.data);
 
         if (answer.status === 'success')

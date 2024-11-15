@@ -1,4 +1,4 @@
-export function showChatRoom(chat)
+export function loadChatRoomData(chat)
 {
     // находим комнату чата
     let chatRoom = document.querySelector('#chat-room');
