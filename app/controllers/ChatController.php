@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\Member;
 use App\Models\Message;
 use App\Models\User;
+use App\Services\Database\QueryBuilderError;
 use App\Services\Database\QueryBuilderError as QBError;
 
 class ChatController extends Controller
@@ -33,6 +34,29 @@ class ChatController extends Controller
 
             return json_encode($answer);
         }
+
+        $func = function ($chat)
+        {
+                // находим текст и отправителя последнего сообщения
+            $lastMessage = Message::table()
+                                    ->query()
+                                    ->customQuery('
+                                    select u.name as last_message_user, m.text as last_message_text 
+                                    from users as u
+                                    join messages as m on u.id = m.user_id 
+                                    where m.chat_id = ' . $chat['id'] . '
+                                    and m.time = (select max(time) from messages where chat_id = ' . $chat['id'] . ')');
+
+            if (!is_null($lastMessage))
+            {
+                $chat['last_message'] = $lastMessage;
+            }
+
+            return $chat;
+        };
+
+        // добавляем чатам последнее сообщение
+        $chats = array_map($func, $chats);
 
         $answer['status'] = 'success';
 

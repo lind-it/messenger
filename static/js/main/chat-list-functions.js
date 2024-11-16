@@ -38,8 +38,10 @@ export function createChatElement(chatData)
 {
     let chatName = chatData.name;
     let chatImg = chatData.avatar;
+    let lastMessageText = chatData.last_message[0]['last_message_text'];
+    let lastMessageUser = chatData.last_message[0]['last_message_user'];
     let chatElement = document.createElement('div');
-
+    console.log(chatData.last_message)
 
     chatElement.className = 'chat';
     chatElement.id = chatData.id
@@ -50,8 +52,12 @@ export function createChatElement(chatData)
         <div class="chat-body">
             <h3>${chatName}</h3>
             <div class="chat-body-bottom">
-                <p class="last-message">last message</p>
-                <div class="unread-message-count">0</div>
+                <div class="last-message">
+                    <div style="display: inline-block; color: #9aa0ca">
+                        <strong>${lastMessageUser}:</strong>
+                    </div> 
+                    <div style="margin-left: 4px;">${lastMessageText}</div>
+                </div>
             </div>
         </div>
     `;

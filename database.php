@@ -33,7 +33,7 @@ DBWorker::create('chats', [
 DBWorker::create('messages', [
                     'id' => ['SERIAL', 'PRIMARY KEY'],
                     'text' => ['VARCHAR(255)', 'NOT NULL'],
-                    'time' => ['TIME WITHOUT TIME ZONE'],
+                    'time' => ['TIMESTAMP WITHOUT TIME ZONE'],
                     'user_id' => ['INT', 'NOT NULL', 'REFERENCES users(id)'],
                     'chat_id' => ['INT', 'NOT NULL', 'REFERENCES chats(id)'],
                 ]);
