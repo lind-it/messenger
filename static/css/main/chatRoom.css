@@ -26,12 +26,15 @@
 .chat-room-head img{
     width: 60px;
     height: 60px;
+    border-radius: 50%;
 }
 
 .chat-room-body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: scroll;
+    height: 84vh;
 }
 
 .my{
@@ -72,14 +75,17 @@
     text-align: left;
 }
 
-.chat-room form{
-    position: absolute;
+.chat-room-bottom{
+    height: 7vh;
+}
+
+.chat-room-bottom form{
     bottom: 1vh;
     width: 98%;
     align-self: center;
 }
 
-.chat-room form textarea {
+.chat-room-bottom form textarea {
     border: none;
     width: 90%;
     font-size: 25px;
@@ -94,7 +100,7 @@
     padding-left: 10px;
 }
 
-.chat-room form button{
+.chat-room-bottom form button{
     background: #274f77;
     width: 6vh;
     height: 6vh;
@@ -105,7 +111,7 @@
     font-size: 25px;
 }
 
-.chat-room-body form button img{
+.chat-room-bottom form button img{
     width: 5vh;
     height: 5vh;
 }

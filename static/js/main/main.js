@@ -7,6 +7,7 @@ import {loadChatRoomData} from './rooms/chat-room.js';
 
 document.addEventListener('DOMContentLoaded', ()=>
 {
+    uploadProfileData();
     init();
 });
 
@@ -20,6 +21,7 @@ function init()
     let changeProfileBtn = document.querySelector('#change-profile');
     let sendMessageForm = document.forms.message;
     let websocket = wsConnectionInit();
+
 
     //навешиваем обработчики собитий
     //при нажатии на кнопку плюса показываем форму создания чатов

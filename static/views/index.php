@@ -76,11 +76,13 @@
 
                 </div>
 
-                <form name="message">
-                    <input type="hidden" name="chatId">
-                    <textarea name="text" placeholder="напишите что-нибудь"></textarea>
-                    <button type="submit">&#9658;</button>
-                </form>
+                <div class="chat-room-bottom">
+                    <form name="message">
+                        <input type="hidden" name="chatId">
+                        <textarea name="text" placeholder="напишите что-нибудь"></textarea>
+                        <button type="submit">&#9658;</button>
+                    </form>
+                </div>
             </div>
 
         </div>

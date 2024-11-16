@@ -17,7 +17,6 @@ export function loadChatRoomData(chat)
 
     answer.then((data) =>
     {
-        console.log('11111111')
         for (let i = 0; i <= data.length; i++)
         {
             chatRoomBody.insertAdjacentHTML('beforeEnd',
