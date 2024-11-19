@@ -2,6 +2,7 @@ export function sendMessage(form, websock)
 {
     let message =
         {
+            'type': 'request',
             'trigger': 'message',
             'action': 'create',
             'data':

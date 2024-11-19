@@ -41,7 +41,6 @@ export function createChatElement(chatData)
     let lastMessageText = chatData.last_message[0]['last_message_text'];
     let lastMessageUser = chatData.last_message[0]['last_message_user'];
     let chatElement = document.createElement('div');
-    console.log(chatData.last_message)
 
     chatElement.className = 'chat';
     chatElement.id = chatData.id

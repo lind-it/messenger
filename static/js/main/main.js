@@ -4,6 +4,8 @@ import {hideRoom, showRoom} from './rooms.js';
 import {uploadProfileData, changeProfile} from './rooms/profile-room.js';
 import {wsConnectionInit} from './wsInit.js';
 import {loadChatRoomData} from './rooms/chat-room.js';
+import {intoRoom} from "./ws-functions/intoRoom";
+import {exitRoom} from "./ws-functions/exitRoom";
 
 document.addEventListener('DOMContentLoaded', ()=>
 {
@@ -22,7 +24,6 @@ function init()
     let sendMessageForm = document.forms.message;
     let websocket = wsConnectionInit();
 
-
     //навешиваем обработчики собитий
     //при нажатии на кнопку плюса показываем форму создания чатов
     createChatBtn.addEventListener('click', () =>
@@ -31,6 +32,8 @@ function init()
             // убираем показанные сообщения
             document.querySelector('.chat-room-body').innerHTML = '';
             document.querySelector('.chosen').className.replace('chosen', '');
+
+            exitRoom(websocket);
         });
         hideRoom('#profile-room');
         showRoom('#create-chat-room', 'flex');
@@ -43,6 +46,8 @@ function init()
             // убираем показанные сообщения
             document.querySelector('.chat-room-body').innerHTML = '';
             document.querySelector('.chosen').className.replace('chosen', '');
+
+            exitRoom(websocket);
         });
         hideRoom('#create-chat-room');
         showRoom('#profile-room', 'flex', uploadProfileData);
@@ -79,6 +84,7 @@ function init()
                     // даем комнате показатель того, что пользователь находится в ней
                     thisChat.className += ' chosen';
 
+                    intoRoom(websocket, thisChat.id);
                     loadChatRoomData(thisChat);
                 }
 

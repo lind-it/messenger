@@ -27,14 +27,34 @@ class Ws implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-        $numRecv = count($this->clients) - 1;
-
-        echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
-            , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
-
         $msgData = json_decode($msg, true);
 
-        echo 'http://messenger/' . $msgData['trigger'] . '/' . $msgData['action'];
+        // Переделать, слишком большая вложенность
+        if ($msgData['type'] === 'ws-data')
+        {
+            // если пользователь вошел в конату, то его соединению присваевается свойство chatId
+            if ($msgData['action'] === 'into-room')
+            {
+                foreach ($this->clients as $client)
+                {
+                    if ($from === $client)
+                    {
+                        $client->chatId = $msgData['data']['chatId'];
+                    }
+                }
+            }
+
+            else if ($msgData['action'] === 'exit-room')
+            {
+                foreach ($this->clients as $client)
+                {
+                    if ($from === $client)
+                    {
+                        unset($client->chatId);
+                    }
+                }
+            }
+        }
 
         // Определение параметров сеанса
         $curlOptions = array(
